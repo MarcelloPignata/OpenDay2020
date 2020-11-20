@@ -57,45 +57,75 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // WRITE TO FILE
-    public static void writeToFile(Context context, String text, String filename) {
-        try {
+    public static void writeToFile(Context context, String text, String filename)
+    {
+        try
+        {
+            // initialize output stream writer
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(context.openFileOutput(filename, Context.MODE_PRIVATE));
+
+            // write on file
             outputStreamWriter.write(text);
+
+            // terminate output steam writer
             outputStreamWriter.close();
         }
-        catch (IOException e) {
-            Log.e("Exception", "File write failed: " + e.toString());
+        catch (IOException e)
+        {
+            // log errors
+            Log.e("USERLOG", "File write failed: " + e.toString());
         }
     }
 
     // READ FROM FILE
-    public static String readFromFile(Context context, String filename) {
-
+    public static String readFromFile(Context context, String filename)
+    {
+        // initialization of return string
         String ret = "";
 
-        try {
+        try
+        {
+            // initialize inputStream
             InputStream inputStream = context.openFileInput(filename);
 
-            if ( inputStream != null ) {
-                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            // if file is not empty
+            if ( inputStream != null )
+            {
+                // initialize buffered reader
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+
+                // initialization of single line string
                 String receiveString = "";
+
+                // initialize string builder
                 StringBuilder stringBuilder = new StringBuilder();
 
-                while ( (receiveString = bufferedReader.readLine()) != null ) {
+                // as long as there are new lines
+                while ( (receiveString = bufferedReader.readLine()) != null )
+                {
+                    // append line to string builder
                     stringBuilder.append("\n").append(receiveString);
                 }
 
+                // terminate input stream
                 inputStream.close();
+
+                // save string builder into return string
                 ret = stringBuilder.toString();
             }
         }
-        catch (FileNotFoundException e) {
-            Log.e("login activity", "File not found: " + e.toString());
-        } catch (IOException e) {
-            Log.e("login activity", "Can not read file: " + e.toString());
+        catch (FileNotFoundException e)
+        {
+            // log "file not found" error
+            Log.e("USERLOG", "File not found: " + e.toString());
+        }
+        catch (IOException e)
+        {
+            // log generic error
+            Log.e("USERLOG", "Can not read file: " + e.toString());
         }
 
+        // return return string, containing all of file's content
         return ret;
     }
 }
