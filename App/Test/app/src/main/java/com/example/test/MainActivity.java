@@ -1,12 +1,18 @@
 package com.example.test;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
@@ -22,38 +28,48 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
+
+    // initialize upload and download handler
+    FTP_Upload Upload = new FTP_Upload();
+    FTP_Download Download = new FTP_Download();
+
+    // CODE SAMPLES
+    /*
+
+        LOAD PICTURE FROM WEB
+
+        ImageView image = new ImageView(this);
+        image.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        ConstraintLayout Layout = findViewById(R.id.myLayout);
+        Layout.addView(image);
+        new LoadImage(image).execute("https://pignataftp.000webhostapp.com/pics/1.jpg");
+
+
+
+        UPLOAD / DOWNLOAD FILES
+
+        Upload.filename = FILENAME;
+        Upload.execute();
+
+        Download.filename = FILENAME;
+        Download.execute();
+
+
+
+        WRITE TO FILE
+
+        writeToFile(getApplicationContext(), "text", FILENAME);
+
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
-
-    // BUTTON CLICK
-    public void onClick(View view)
-    {
-        // define filename
-        String FILENAME = "data.txt";
-
-        // create file
-        writeToFile(getApplicationContext(), "test123$!#", FILENAME);
-
-        // initialize upload and download handler
-        FTP_Upload Upload = new FTP_Upload();
-        FTP_Download Download = new FTP_Download();
-
-        // set file names
-        Upload.filename = FILENAME;
-        Download.filename = FILENAME;
-
-        // upload and delete file
-        Upload.execute();
-
-        // download and read file
-        Download.execute();
     }
 
     // WRITE TO FILE
@@ -127,6 +143,49 @@ public class MainActivity extends AppCompatActivity {
 
         // return return string, containing all of file's content
         return ret;
+    }
+}
+
+class LoadImage extends AsyncTask<String, Void, Bitmap>
+{
+    // pointer to ImageView to load image into
+    ImageView bmImage;
+
+    // constructor
+    public LoadImage(ImageView bmImage)
+    {
+        this.bmImage = bmImage;
+    }
+
+    protected Bitmap doInBackground(String... urls)
+    {
+        // store URL
+        String url = urls[0];
+
+        // initialize empty bitmap
+        Bitmap mIcon11 = null;
+
+        try
+        {
+            // open InputStream from given URL
+            InputStream in = new java.net.URL(url).openStream();
+
+            // store decoded bitmap into mIcon11
+            mIcon11 = BitmapFactory.decodeStream(in);
+        }
+        catch (Exception e)
+        {
+            // Log errors
+            Log.e("USERLOG", e.getMessage());
+        }
+
+        return mIcon11;
+    }
+
+    protected void onPostExecute(Bitmap result)
+    {
+        // load image into given ImageView
+        bmImage.setImageBitmap(result);
     }
 }
 
