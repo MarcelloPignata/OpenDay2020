@@ -7,5 +7,5 @@ function appartamento(){
 
 function cancel(){
     document.getElementById("nascondi2").style.display = "block";
-    document.getElementById("nascondi").style.display = "none";
+
 }
