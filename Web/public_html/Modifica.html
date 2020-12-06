@@ -1,62 +1,123 @@
-
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset='utf-8'>
-  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-  <title>APPARTAMENTI</title>
-  
-  <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
- 
-
-</head>
-
-<body>
-<div class="container">
-    <!-- barra di navigazione -->
-    <nav class="nav">
-      <h2 class="logo"><img src="img/Logo.jpg" alt="" height="90px" width="90px" /></h2>
-      <ul class="mmenu">
-        <!-- ho inserito 3 possibili pagine web in alto a destra -->
-        <li><a href="Index.php">Home</a></li>
-        <li><a href="Modifica.html">Modifica</a></li>
-        <li><a href="lettura.php">Ordini</a></li>
-      </ul>
-    </nav>
-  
-
-    <!--bottoni per o eliminare o inserire un appartamento-->
-    
-
-  <form Name="Dati" Method="post" Action= "prova.php" enctype="multipart/form-data" > 
-    Select image to upload:
-      <input type="file" name="fileToUpload" id="fileToUpload">
-   
-      Id:
-       <Input Name="id" Type ="Text">
-       <br>
-       Titolo:
-       <Input Name="titolo" Type ="Text">
-       <br>
-       Luogo:
-       <Input Name="luogo" Type ="Text">
-       <br>
-       Città:
-       <Input Name="città" Type ="Text">
-       <br>
-       Via (inserire anche numero civico):
-       <Input Name="via" Type ="Text">
-       <br>
-       Descrizione
-       <Input Name="descrizione" Type ="Text">
-        <br>
-       <Input Name="Invia" Type="Submit" Value="Click">
-  </form>
-
-    
-   
-  </div>
-</body>
-
+
+
+<!DOCTYPE html>
+
+<html>
+
+
+
+<head>
+
+  <meta charset='utf-8'>
+
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+
+  <title>APPARTAMENTI</title>
+
+  
+
+  <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+
+ 
+
+
+
+</head>
+
+
+
+<body>
+
+<div class="container">
+
+    <!-- barra di navigazione -->
+
+    <nav class="nav">
+
+      <h2 class="logo"><img src="img/Logo.jpg" alt="" height="90px" width="90px" /></h2>
+
+      <ul class="mmenu">
+
+        <!-- ho inserito 3 possibili pagine web in alto a destra -->
+
+        <li><a href="Index.php">Home</a></li>
+
+        <li><a href="Modifica.html">Modifica</a></li>
+
+        <li><a href="lettura.php">Ordini</a></li>
+
+      </ul>
+
+    </nav>
+
+  
+
+
+
+    <!--bottoni per o eliminare o inserire un appartamento-->
+
+    
+
+
+
+  <form Name="Dati" Method="post" Action= "prova.php" enctype="multipart/form-data" > 
+
+
+   
+
+      Id:
+
+       <Input Name="id" Type ="Text">
+
+       <br>
+
+       Titolo:
+
+       <Input Name="titolo" Type ="Text">
+
+       <br>
+
+       immagine:
+
+      <input type="file" name="fileToUpload" id="fileToUpload">
+
+      <br>
+
+      prezzo:
+
+      <Input Name="prezzo" Type ="Text">
+
+        <br>
+        luogo:
+
+        <Input Name="luogo" Type ="Text">
+  
+          <br>
+        posti:
+ 
+        <Input Name="posti" Type ="Text">
+
+
+       Descrizione:
+
+       <Input Name="descrizione" Type ="Text">
+
+        <br>
+
+       <Input Name="Invia" Type="Submit" Value="Click">
+
+  </form>
+
+
+
+    
+
+   
+
+  </div>
+
+</body>
+
+
+
 </html>
