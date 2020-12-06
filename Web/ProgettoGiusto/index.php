@@ -39,8 +39,10 @@
            <br>
           liguria genova via alla chiesa n 28 <br>
         </p>-->
-        <?php
+        
 
+        <?php
+        
         $dati = file_get_contents("write");
         $part = explode(PHP_EOL, $dati);
        // print_r($part);
