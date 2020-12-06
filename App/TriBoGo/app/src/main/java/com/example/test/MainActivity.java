@@ -35,13 +35,9 @@ import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
-
-    // initialize upload and download handler
-    FTP_Upload Upload = new FTP_Upload();
-    FTP_Download Download = new FTP_Download();
-
     // CODE SAMPLES
     /*
 
@@ -51,15 +47,19 @@ public class MainActivity extends AppCompatActivity {
         image.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         ConstraintLayout Layout = findViewById(R.id.myLayout);
         Layout.addView(image);
-        new LoadImage(image).execute("https://pignataftp.000webhostapp.com/pics/1.jpg");
+        new LoadImage(image).execute("https://pignataftp.000webhostapp.com/img/1.jpg");
 
 
 
         UPLOAD / DOWNLOAD FILES
 
+
+        FTP_Upload Upload = new FTP_Upload();
         Upload.filename = FILENAME;
         Upload.execute();
 
+
+        FTP_Download Download = new FTP_Download();
         Download.filename = FILENAME;
         Download.execute();
 
@@ -99,15 +99,42 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        adapter=new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1,
-                listItems);
+        adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,listItems);
         list.setAdapter(adapter);
     }
 
     //METHOD WHICH WILL HANDLE DYNAMIC INSERTION
-    public void addItems(View v) {
-        listItems.add("Item : "+clickCounter++);
+    public void refresh(View v) throws ExecutionException, InterruptedException {
+
+        FTP_Download Download = new FTP_Download();
+        Download.filename = "appartamenti.csv";
+        FTPClient ftp = Download.execute().get();
+
+        String file = readFromFile(MyApp.getContext(), "appartamenti.csv");
+
+        listItems.clear();
+        String[] lines = file.split(System.getProperty("line.separator"));
+        String[] line;
+        ArrayList<Appartamento> appartamenti = new ArrayList<Appartamento>();
+        Appartamento appartamento;
+
+        for(int i = 2; i < lines.length; i++)
+        {
+            line = lines[i].split("\\|");
+
+            appartamento = new Appartamento();
+            appartamento.id = Integer.parseInt(line[0]);
+            appartamento.titolo = line[1];
+            appartamento.nomeFileImmagine = line[2];
+            appartamento.luogo = line[3];
+            appartamento.prezzo = Float.parseFloat(line[4]);
+            appartamento.posti = Integer.parseInt(line[5]);
+            appartamento.descrizione = line[6];
+
+            appartamenti.add(appartamento);
+
+            listItems.add(appartamento.titolo + " - " + appartamento.luogo);
+        }
         adapter.notifyDataSetChanged();
     }
 
@@ -307,7 +334,7 @@ class FTP_Upload extends AsyncTask<Void, Void, FTPClient>
     }
 }
 
-class FTP_Download extends AsyncTask<Void, Void, FTPClient>
+class FTP_Download extends AsyncTask<Void, String, FTPClient>
 {
     // name of the file to download
     public String filename;
@@ -342,7 +369,7 @@ class FTP_Download extends AsyncTask<Void, Void, FTPClient>
             File LocalFile = new File(MyApp.getContext().getFilesDir().getAbsolutePath() + '/' + filename);
 
             // define remote file name
-            String RemoteFile = filename;
+            String RemoteFile = "public_html/" + filename;
 
             // initialize output stream to file
             OutputStream outputStream = new BufferedOutputStream(new FileOutputStream(LocalFile));
@@ -356,9 +383,6 @@ class FTP_Download extends AsyncTask<Void, Void, FTPClient>
             // log download result
             if (success)    { Log.v("USERLOG","File has been downloaded successfully"); }
             else            { Log.e("USERLOG","File not downloaded"); }
-
-            // read file
-            Log.v("USERLOG", MainActivity.readFromFile(MyApp.getContext(), filename));
 
         }
         catch (IOException ex)
@@ -387,5 +411,10 @@ class FTP_Download extends AsyncTask<Void, Void, FTPClient>
         }
 
         return ftpClient;
+    }
+
+
+    protected void onPostExecute(FTPClient ftpClient)
+    {
     }
 }
