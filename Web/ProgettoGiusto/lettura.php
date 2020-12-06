@@ -16,7 +16,7 @@
         <h2 class="logo"><img src="img/Logo.jpg" alt="" height="90px" width="90px"/></h2>
         <ul class="menu">
             <!-- ho inserito 3 possibili pagine web in alto a destra -->
-          <li><a href="Index.html">Home</a></li>
+          <li><a href="Index.php">Home</a></li>
           <li><a href="Modifica.html">Modifica</a></li>
           <li><a href="lettura.php">Ordini</a></li>
         </ul>
@@ -27,9 +27,9 @@
           <p>
 
           <?php
-          file_put_contents("file1","WrfdDdDqd");
-           echo file_get_contents("file1");
-        ?>
+          
+           echo file_get_contents("read");
+         ?>
           </p>
         </div>
     </section>
