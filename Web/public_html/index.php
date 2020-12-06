@@ -68,21 +68,6 @@
 
       <div>
 
-        <!--<img src="img/img1.jpg" alt="" />
-
-        <h3>Casa:</h3>
-
-        <p>
-
-           <br>
-
-          liguria genova via alla chiesa n 28 <br>
-
-        </p>-->
-
-        
-
-
 
         <?php
 
@@ -96,7 +81,7 @@
 
         for ($i = 0; $i <= count($part)-2; $i++) {
 
-          $var = explode(' | ', $part[$i]);
+          $var = explode('|', $part[$i]);
 
           echo $var[0].'<br/>';
 
@@ -109,6 +94,8 @@
           echo $var[4].'<br/>';
 
           echo $var[5].'<br/>';
+
+          echo $var[6].'<br/>';
 
         }
 

@@ -50,7 +50,7 @@
 
       <div class="content">
 
-        <h2>Dati inviati correttamete:</h2>
+        
 
         <p>
 
@@ -60,21 +60,13 @@
 
 
 
-
-
-
-
-
-
-
-
           function test()
 
           {
 
             $filename = basename($_FILES["fileToUpload"]["name"]);
 
-            echo $filename;
+            
 
             $target_dir = "img/";
 
@@ -92,13 +84,13 @@
 
               if ($check !== false) {
 
-                echo "File is an image - " . $check["mime"] . ".";
+                
 
                 $uploadOk = 1;
 
               } else {
 
-                echo "File is not an image.";
+               
 
                 $uploadOk = 0;
 
@@ -110,7 +102,7 @@
 
             if (file_exists($target_file)) {
 
-              echo "Sorry, file already exists.";
+              
 
               $uploadOk = 0;
 
@@ -128,7 +120,7 @@
 
             ) {
 
-              echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+              
 
               $uploadOk = 0;
 
@@ -138,7 +130,7 @@
 
             if ($uploadOk == 0) {
 
-              echo "Sorry, your file was not uploaded.";
+            
 
               // if everything is ok, try to upload file
 
@@ -146,11 +138,10 @@
 
               if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 
-                echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
-
+               
               } else {
 
-                echo "Sorry, there was an error uploading your file.";
+              
 
               }
 
@@ -168,6 +159,8 @@
 
             $prezzo = $_POST["prezzo"];
 
+            $luogo = $_POST["luogo"];
+
             $posti = $_POST["posti"];
 
             $descrizione = $_POST["descrizione"];
@@ -178,13 +171,15 @@
 
             $file = fopen("write", "a");
 
-            fwrite($file, "$id | $titolo | $filename | $prezzo | $posti | $descrizione");
+            fwrite($file, "$id|$titolo|$filename|$luogo|$prezzo|$posti|$descrizione");
 
             fwrite($file, "\r\n");
 
             fclose($file);
 
-            echo file_get_contents("write");
+            echo "Dati inviati correttamente".'<br/>';
+
+            echo "Premere su home per vedere i dati oppure su Modifica per aggiungerne di nuovi";
 
           
 
