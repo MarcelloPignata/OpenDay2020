@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+    <!DOCTYPE html>
 <html>
 <head>
     <meta charset='utf-8'>
@@ -26,17 +27,9 @@
           <p>
 
           <?php
-
-     function test(){
-          $dato=$_POST["T1"];
-          $file = fopen("file2", "a");
-          fwrite($file, "$dato");
-          fwrite($file, "\r\n"); 
-          fclose($file);
-          echo file_get_contents("file2");
-          }
-       test()
-       ?>
+          file_put_contents("file1","fevyvf");
+           echo file_get_contents("file1");
+         ?>
           </p>
         </div>
     </section>
