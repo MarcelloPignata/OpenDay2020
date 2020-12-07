@@ -174,7 +174,7 @@
               echo "premere su modifica e rinserire gli elementi".'<br/>';
             }else{
 
-            $file = fopen("write", "a");
+            $file = fopen("appartamenti.csv", "a");
 
             fwrite($file, "\r\n");
 

@@ -14,12 +14,10 @@
 
   <title>APPARTAMENTI</title>
 
-  
-
   <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
 
  
-
+  <script src='main.js'></script>
 
 
 </head>
@@ -40,7 +38,7 @@
 
         <!-- ho inserito 3 possibili pagine web in alto a destra -->
 
-        <li><a href="Index.php">Home</a></li>
+        <li><a href="index.php">Home</a></li>
 
         <li><a href="Modifica.html">Modifica</a></li>
 
@@ -62,12 +60,11 @@
    
     <br><br>
 
+    <div class ="content" id = "nascondi">
     <h2>INSERIMENTO APPARTAMENTI</h2>
 
 
   <form Name="Dati" Method="post" Action= "prova.php" enctype="multipart/form-data" class = "center"> 
-
-    <div class = "content" id = "nascondi">
 
       Id:
 
@@ -114,13 +111,14 @@
 
        <Input Name="Invia" Type="Submit" Value="Invia" class = "btn">
 
-       </div>
-
   </form>
 
+</div>
+
+<div class = "content" id = "nascondi2">
   <form Name="Dati" Method="post" Action= "elimina.php" enctype="multipart/form-data" class = "center"> 
 
-    <div class = "content" id = "nascondi2">
+
       <p>
           <h2>ELIMINA APPARTAMENTO:</h2>
 
@@ -130,9 +128,9 @@
           <Input Name="Invia" Type="Submit" Value="Elimina" class = "btn">
       </p>
       
-  </div>
+ 
   </form>
-
+</div>
 
 
     

@@ -82,7 +82,7 @@
 
         
 
-        $dati = file_get_contents("write.csv");
+        $dati = file_get_contents("appartamenti.csv");
 
         $part = explode(PHP_EOL, $dati);
 

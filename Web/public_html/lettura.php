@@ -34,7 +34,7 @@
 
             <!-- ho inserito 3 possibili pagine web in alto a destra -->
 
-          <li><a href="Index.php">Home</a></li>
+          <li><a href="index.php">Home</a></li>
 
           <li><a href="Modifica.html">Modifica</a></li>
 
@@ -66,7 +66,7 @@
 
           echo '</tr>';
 
-           $datilettura = file_get_contents("read.csv");
+           $datilettura = file_get_contents("ordini.csv");
 
            $part = explode(PHP_EOL, $datilettura);
 
