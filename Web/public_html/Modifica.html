@@ -50,62 +50,83 @@
 
     </nav>
 
-  
-
-
-
     <!--bottoni per o eliminare o inserire un appartamento-->
-
-    
-
-
-
-  <form Name="Dati" Method="post" Action= "prova.php" enctype="multipart/form-data" > 
-
-
+    <header class="Descrizione">
+      <a  value = "cance" onclick = "cancel()" class="btn">Elimina</a>
+      <a  value = "New" onclick = "appartamento()" class="btn">Nuovo appartamento</a>
+      </header>
    
+    <br><br>
+
+    <h2>INSERIMENTO APPARTAMENTI</h2>
+
+
+  <form Name="Dati" Method="post" Action= "prova.php" enctype="multipart/form-data" class = "center"> 
+
+    <div class = "content" id = "nascondi">
 
       Id:
 
        <Input Name="id" Type ="Text">
 
-       <br>
+       <br><br>
 
        Titolo:
 
        <Input Name="titolo" Type ="Text">
 
-       <br>
+       <br><br>
 
        immagine:
 
       <input type="file" name="fileToUpload" id="fileToUpload">
 
-      <br>
+      <br><br>
 
       prezzo:
 
       <Input Name="prezzo" Type ="Text">
 
-        <br>
+        <br><br>
+
         luogo:
 
         <Input Name="luogo" Type ="Text">
   
-          <br>
+          <br><br>
+
         posti:
  
         <Input Name="posti" Type ="Text">
 
 
-       Descrizione:
+        <br><br>
 
-       <Input Name="descrizione" Type ="Text">
+        Descrizione:
 
-        <br>
+        <Textarea Name="descrizione" Type ="Text" class = "desc"> </textarea>
 
-       <Input Name="Invia" Type="Submit" Value="Click">
+        <br><br><br>
 
+       <Input Name="Invia" Type="Submit" Value="Invia" class = "btn">
+
+       </div>
+
+  </form>
+
+  <form Name="Dati" Method="post" Action= "elimina.php" enctype="multipart/form-data" class = "center"> 
+
+    <div class = "content" id = "nascondi2">
+      <p>
+          <h2>ELIMINA APPARTAMENTO:</h2>
+
+          <label>Inserire ID dell'appartamento che vuoi eliminare:</label><input type = "text" id = "ID" Name = "Id_eliminare">
+          <br><br>
+
+          <Input Name="Invia" Type="Submit" Value="Elimina" class = "btn">
+      </p>
+      
+  </div>
   </form>
 
 
