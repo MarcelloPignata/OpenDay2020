@@ -116,7 +116,7 @@
 
               $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 
-              && $imageFileType != "gif"
+              && $imageFileType != "gif"  && $imageFileType != "jfif"
 
             ) {
 
@@ -165,9 +165,14 @@
 
             $descrizione = $_POST["descrizione"];
 
-
-
-
+            if($id == "" or $titolo == "" or $prezzo == "" or $luogo == "" or $posti == "" or $descrizione == "" )
+            {
+              echo '<h2>'."DATI NON INVIATI".'</h2>'.'<br/>';
+              echo '<br/>';
+              echo "controllare se manca qualche elemento da mettere".'<br/>';
+              echo '<br/>';
+              echo "premere su modifica e rinserire gli elementi".'<br/>';
+            }else{
 
             $file = fopen("write", "a");
 
@@ -181,6 +186,8 @@
             echo'<br/>';
 
             echo "Premere su home per vedere i dati oppure su Modifica per aggiungerne di nuovi";
+
+            }
 
           
 

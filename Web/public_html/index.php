@@ -49,10 +49,20 @@
     <!-- Header -->
 
     <header class="Descrizione">
+    <h1 class = "titolo"> TRIBOGO </h1>
+    <br> <br> <br> <br>
+    
+    <p> Questo sito serve:<br> 
+    per inserire i vari appartamenti che poi si visualizzeranno sull'applicazione.<br>
+    per visualizzare tutti gl'ordini che hanno fatto nell'applicazione.<br> 
 
-      <h2> ---- descrizione di noi ----</h2>
-
+       </p>
+    <video autoplay muted loop class = "video-back">
+    <source src = "img/video.mp4" type= "video/mp4">
+    </video>
     </header>
+
+    
 
 
 
@@ -60,18 +70,19 @@
 
     <br><br>
 
+    
     <h2>APPARTAAMENTI DISPONIBILI:</h2>
 
 
-
     <section class="box">
+    
 
   
         <?php
 
         
 
-        $dati = file_get_contents("write");
+        $dati = file_get_contents("write.csv");
 
         $part = explode(PHP_EOL, $dati);
 
