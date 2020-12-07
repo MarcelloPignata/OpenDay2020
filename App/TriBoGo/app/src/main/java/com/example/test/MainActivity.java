@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,11 +11,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
@@ -32,9 +29,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
@@ -71,14 +66,12 @@ public class MainActivity extends AppCompatActivity {
 
      */
 
-    //LIST OF ARRAY STRINGS WHICH WILL SERVE AS LIST ITEMS
     ArrayList<String> listItems=new ArrayList<String>();
 
-    //DEFINING A STRING ADAPTER WHICH WILL HANDLE THE DATA OF THE LISTVIEW
     ArrayAdapter<String> adapter;
 
-    //RECORDING HOW MANY TIMES THE BUTTON HAS BEEN CLICKED
-    int clickCounter=0;
+
+    ArrayList<Appartamento> appartamenti;
 
 
     @Override
@@ -87,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        appartamenti = new ArrayList<Appartamento>();
         ListView list = (ListView)findViewById(R.id.list);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -94,7 +88,16 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3)
             {
                 Intent myIntent = new Intent(MainActivity.this, AppartamentoActivity.class);
-                myIntent.putExtra("posizione", "Posizione: " + position); //Optional parameters
+
+                Appartamento appartamento = appartamenti.get(position);
+                myIntent.putExtra("id", appartamento.id);
+                myIntent.putExtra("titolo", appartamento.titolo);
+                myIntent.putExtra("nomeFileImmagine", appartamento.nomeFileImmagine);
+                myIntent.putExtra("luogo", appartamento.luogo);
+                myIntent.putExtra("prezzo", appartamento.prezzo);
+                myIntent.putExtra("posti", appartamento.posti);
+                myIntent.putExtra("descrizione", appartamento.descrizione);
+
                 MainActivity.this.startActivity(myIntent);
             }
         });
@@ -103,19 +106,18 @@ public class MainActivity extends AppCompatActivity {
         list.setAdapter(adapter);
     }
 
-    //METHOD WHICH WILL HANDLE DYNAMIC INSERTION
     public void refresh(View v) throws ExecutionException, InterruptedException {
 
         FTP_Download Download = new FTP_Download();
         Download.filename = "appartamenti.csv";
-        FTPClient ftp = Download.execute().get();
+        Download.execute().get();
 
         String file = readFromFile(MyApp.getContext(), "appartamenti.csv");
 
         listItems.clear();
         String[] lines = file.split(System.getProperty("line.separator"));
         String[] line;
-        ArrayList<Appartamento> appartamenti = new ArrayList<Appartamento>();
+        appartamenti.clear();
         Appartamento appartamento;
 
         for(int i = 2; i < lines.length; i++)
