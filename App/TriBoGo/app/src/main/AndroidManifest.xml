@@ -3,7 +3,6 @@
     package="com.example.test">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -14,7 +13,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity
+            android:name=".PrenotatoActivity"
+            android:label="@string/title_activity_prenotato"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".PrenotaActivity"
+            android:label="@string/title_activity_prenota"
+            android:theme="@style/AppTheme.NoActionBar" />
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.
@@ -25,8 +31,7 @@
 
         <activity
             android:name=".AppartamentoActivity"
-            android:label="@string/title_activity_appartamento">
-        </activity>
+            android:label="@string/title_activity_appartamento" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

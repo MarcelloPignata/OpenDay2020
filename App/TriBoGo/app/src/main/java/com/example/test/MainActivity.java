@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
         appartamenti.clear();
         Appartamento appartamento;
 
-        for(int i = 2; i < lines.length; i++)
+        for(int i = 1; i < lines.length; i++)
         {
             line = lines[i].split("\\|");
 
@@ -267,8 +267,8 @@ class FTP_Upload extends AsyncTask<Void, Void, FTPClient>
         // define FTP details
         String server = "files.000webhost.com";
         int port = 21;
-        String user = "pignataftp";
-        String pass = "Briat123";
+        String user = "OpenDay2020";
+        String pass = "3Swh!jjwOuYstni!p@Wk";
 
         // initialize FTP Handler
         FTPClient ftpClient = new FTPClient();
@@ -351,8 +351,8 @@ class FTP_Download extends AsyncTask<Void, String, FTPClient>
         // define FTP details
         String server = "files.000webhost.com";
         int port = 21;
-        String user = "pignataftp";
-        String pass = "Briat123";
+        String user = "OpenDay2020";
+        String pass = "3Swh!jjwOuYstni!p@Wk";
 
         // initialize FTP Handler
         FTPClient ftpClient = new FTPClient();
