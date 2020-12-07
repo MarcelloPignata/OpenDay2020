@@ -50,156 +50,43 @@
 
       <div class="content">
 
-        
-
         <p>
-
 
 
           <?php
 
 
-
           function test()
+          { 
+            $dati = file_get_contents("appartamenti.csv");
 
-          {
+        $part = explode(PHP_EOL, $dati);
 
-            $filename = basename($_FILES["fileToUpload"]["name"]);
+       // print_r($part);
 
+      
+            $key = $_POST["id_Eliminare"];
+
+            //load file into $fc array
+
+            $fc = file("appartamenti.csv");
+
+            //open same file and use "w" to clear file
+
+            $f = fopen("appartamenti.csv", "w");
+
+            //loop through array using foreach
             
-
-            $target_dir = "img/";
-
-            $target_file = $target_dir . $filename;
-
-            $uploadOk = 1;
-
-            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-            // Check if image file is a actual image or fake image
-
-            if (isset($_POST["submit"])) {
-
-              $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-
-              if ($check !== false) {              
-
-                $uploadOk = 1;
-
-              } else {
-
-               
-
-                $uploadOk = 0;
-
-              }
-
-            }
-
-            // Check if file already exists
-
-            if (file_exists($target_file)) {
-
-              
-
-              $uploadOk = 0;
-
-            }
-
-
-
-            // Allow certain file formats
-
-            if (
-
-              $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-
-              && $imageFileType != "gif"
-
-            ) {
-
-              
-
-              $uploadOk = 0;
-
-            }
-
-            // Check if $uploadOk is set to 0 by an error
-
-            if ($uploadOk == 0) {
-
+    
+            foreach ($fc as $line) {
+              if (!strstr($line, $key)) //look for $key in each line
+                fputs($f, $line); //place $line back in file
             
+          }
+            fclose($f);
+          }
 
-              // if everything is ok, try to upload file
-
-            } else {
-
-              if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-
-               
-              } else {
-
-              
-
-              }
-
-            }
-
-
-
-            $id = $_POST["id"];
-
-            $titolo = $_POST["titolo"];
-
-            $prezzo = $_POST["prezzo"];
-
-            $luogo = $_POST["luogo"];
-
-            $posti = $_POST["posti"];
-
-            $descrizione = $_POST["descrizione"];
-
-            $Id_eliminare = $_POST["Id_eliminare"];
-            
-            $Id_trovato = 0;
-
-            $datielimanare = file_get_contents("write", "w");
-
-            $part = explode(PHP_EOL, $datielimanare);
- 
-            for ($i = 0; $i <= count($part)-1; $i++) {
-
-                $var = explode('|', $part[$i]);
-
-                if($Id_eliminare == $var[0])
-                {
-                    $Id_trovato = 1;
-
-                }else{
-                  $array_nuovo = array($var[0],$var[1,$var[2,$var[3],$var[4],$var[5],$var[6]]);
-                  echo $array_nuovo;
-                }
-
-            }
-
-            fwrite($file, "\r\n");
-
-            fwrite($file, "$id|$titolo|$filename|$luogo|$prezzo|$posti|$descrizione");
-
-            fclose($file);
-
-            echo "I DATI SONO STATI ELIMINATI";
-          
-
-          
-
-          test()
-
-
-
-
-
-
+          test();
 
           ?>
 
