@@ -82,9 +82,7 @@
 
               $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
 
-              if ($check !== false) {
-
-                
+              if ($check !== false) {              
 
                 $uploadOk = 1;
 
@@ -149,11 +147,7 @@
 
 
 
-
-
-            
-
-            $id = $_POST["id"];
+            /* $id = $_POST["id"];
 
             $titolo = $_POST["titolo"];
 
@@ -163,13 +157,37 @@
 
             $posti = $_POST["posti"];
 
-            $descrizione = $_POST["descrizione"];
+            $descrizione = $_POST["descrizione"]; */
 
+            $Id_eliminare = $_POST["Id_eliminare"];
+            
+            $Id_trovato = 0;
 
+            $datilettura = file_get_contents("read");
 
+            $part = explode(PHP_EOL, $datilettura);
+ 
+            for ($i = 0; $i <= count($part)-1; $i++) {
+
+                $var = explode('|', $part[$i]);
+
+                if($Id_eliminare == $part[$0])
+                {
+                    $Id_trovato = $part[$0];
+                }
+
+            }
+
+            fclose($file);
 
 
             $file = fopen("write", "a");
+
+            for($i = 0; $i <= count($part)-1; $i++){
+                $var = explode('|', $part[$i]);
+                if($Id_eliminare == $part[$0])
+
+            }
 
             fwrite($file, "\r\n");
 
@@ -177,14 +195,10 @@
 
             fclose($file);
 
-            echo "Dati inviati correttamente".'<br/>';
-            echo'<br/>';
-
-            echo "Premere su home per vedere i dati oppure su Modifica per aggiungerne di nuovi";
-
+            echo "I DATI SONO STATI ELIMINATI";
           
 
-          }
+          
 
           test()
 

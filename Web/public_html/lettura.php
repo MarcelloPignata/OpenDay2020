@@ -56,15 +56,38 @@
 
           <?php
 
+
+          echo '<table>';
+          echo '<tr>';
+          echo '<th>'."ID CAMERA".'</th>';
+          echo '<th>'."EMAIL".'</th>';
+          echo '<th>'."DATA ARRIVO".'</th>';
+          echo '<th>'."DATA FINE".'</th>';
+
+          echo '</tr>';
+
            $datilettura = file_get_contents("read");
 
            $part = explode(PHP_EOL, $datilettura);
 
            for ($i = 0; $i <= count($part)-1; $i++) {
 
-            echo $part[$i].'<br/>';
+            $var = explode('|', $part[$i]);
 
+            echo '<tr>';
+            echo '<td>'.$var[0].'</td>';
+
+            echo '<td>'.$var[1].'</td>';
+
+            echo '<td>'.$var[2].'</td>';
+
+            echo '<td>'.$var[3].'</td>';
+            
+            echo '</tr>';
+            
            }
+
+           echo '</table>';
          ?>
 
           </p>

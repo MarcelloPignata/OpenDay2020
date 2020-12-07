@@ -66,9 +66,7 @@
 
     <section class="box">
 
-      <div>
-
-
+  
         <?php
 
         
@@ -79,31 +77,37 @@
 
        // print_r($part);
 
-        for ($i = 0; $i <= count($part)-2; $i++) {
+        for ($i = 0; $i <= count($part)-1; $i++) {
 
           $var = explode('|', $part[$i]);
 
-          echo $var[0].'<br/>';
+          echo '<div>';
 
-          echo $var[1].'<br/>';
+
+
+          echo '<h3>'.$var[1].'</h3>'."-->";
+
+          echo "ID:  ".$var[0].'<br/>';
 
           echo "<img src=".'"'."img/".$var[2].'"'."/>";
 
-          echo $var[3].'<br/>';
+          echo "POSTO:  ".$var[3].'<br/>';
 
-          echo $var[4].'<br/>';
+          echo "COSTO:  ".$var[4]."€".'<br/>';
 
-          echo $var[5].'<br/>';
+          echo "POSTI LETTO:  ".$var[5].'<br/>';
+
+          echo "DESCRIZIONE:  ".'<br/>';
 
           echo $var[6].'<br/>';
+
+
+          echo '</div>';
+          
 
         }
 
         ?>
-
-      </div>
-
-
 
     </section>
 
