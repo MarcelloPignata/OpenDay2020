@@ -8,6 +8,14 @@
 
   }
 
+  .titolo{
+    color: rgb(248, 87, 87);
+    height: 170px;
+    font-size: 1000%;
+    font-weight: 600;
+    box-shadow: 0px 15px 10px -10px rgba(0,0,0.4);
+  }
+
   .desc
   {
     min-width: 1000px;
@@ -102,7 +110,7 @@
 
     padding: 20px 0;
 
-    background-color: darksalmon;
+    background-color: rgb(248, 87, 87);
 
   }
 
@@ -191,16 +199,29 @@
 
   }
 
-  
+  .video-back{
+    position: absolute;
+    top:0;
+    left: 0;
+    border-color: #000;
+    z-index: -1;
+    min-height: 100%;
+    min-width: 100%;
+  }
 
+  
+ 
   .Descrizione {
+
+    position: relative;
 
     width: 100%;
 
-    height: 400px;
+    height: 625px;
 
-    background: url("img/Sfondo.jpg") no-repeat center center/cover;
+    background: linear-gradient(0deg, rgba(255, 253, 253, 0.8), rgba(255, 255, 255, 0.3)), url("img/video.mp4") no-repeat center center/cover;
 
+    background-size: cover;
     display: flex;
 
     flex-direction: column;
@@ -211,13 +232,28 @@
 
     justify-content: flex-end;
 
-    padding-bottom: 80px;
+    padding-bottom: 300px;
 
     margin-bottom: 20px;
 
+    overflow: hidden;
+
   }
 
-  
+  /*.Descrizione:after {
+    content: ' ';
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    top: 0; left: 0;
+    background: black;
+    opacioty: 0.1;
+  }*/
+
+  h2{
+    color: rgb(52, 172, 72);
+  }
 
   .Descrizione h2 {
 
@@ -239,7 +275,8 @@
 
   .Descrizione .btn {
 
-    margin-top: 15px;
+    margin-top: 20px;
+    margin-top: 70px;
 
   }
 
@@ -260,13 +297,9 @@
   
 
   .box img {
-
     width: 100%;
-
+    height: 35%;
     margin-bottom: 10px;
-
-    /* height: 150px; */
-
   }
 
   

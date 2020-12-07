@@ -147,7 +147,7 @@
 
 
 
-            /* $id = $_POST["id"];
+            $id = $_POST["id"];
 
             $titolo = $_POST["titolo"];
 
@@ -157,35 +157,28 @@
 
             $posti = $_POST["posti"];
 
-            $descrizione = $_POST["descrizione"]; */
+            $descrizione = $_POST["descrizione"];
 
             $Id_eliminare = $_POST["Id_eliminare"];
             
             $Id_trovato = 0;
 
-            $datilettura = file_get_contents("read");
+            $datielimanare = file_get_contents("write", "w");
 
-            $part = explode(PHP_EOL, $datilettura);
+            $part = explode(PHP_EOL, $datielimanare);
  
             for ($i = 0; $i <= count($part)-1; $i++) {
 
                 $var = explode('|', $part[$i]);
 
-                if($Id_eliminare == $part[$0])
+                if($Id_eliminare == $var[0])
                 {
-                    $Id_trovato = $part[$0];
+                    $Id_trovato = 1;
+
+                }else{
+                  $array_nuovo = array($var[0],$var[1,$var[2,$var[3],$var[4],$var[5],$var[6]]);
+                  echo $array_nuovo;
                 }
-
-            }
-
-            fclose($file);
-
-
-            $file = fopen("write", "a");
-
-            for($i = 0; $i <= count($part)-1; $i++){
-                $var = explode('|', $part[$i]);
-                if($Id_eliminare == $part[$0])
 
             }
 

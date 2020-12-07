@@ -66,7 +66,7 @@
 
           echo '</tr>';
 
-           $datilettura = file_get_contents("read");
+           $datilettura = file_get_contents("read.csv");
 
            $part = explode(PHP_EOL, $datilettura);
 
