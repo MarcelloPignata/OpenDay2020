@@ -8,20 +8,24 @@
 
   }
 
+  .giallo{
+    background-color: whitesmoke;
+  }
 
   p
   {
     color: black;
-    height: -150px;
+    height: 10px;
     font-size: 110%;
-    font-weight: 600;
+    font-weight: 400;
   }
   .titolo{
-    color: rgb(248, 87, 87);
-    height: 170px;
+    height: 100px;
     font-size: 1000%;
     font-weight: 600;
-    box-shadow: 0px 15px 10px -10px rgba(0,0,0.4);
+    color: Black;
+    text-shadow: 0.1em 0.1em 0.15em  rgb(252, 66, 66);
+    font-family: 'times new roman';
   }
 
   .desc
@@ -43,7 +47,7 @@
 
   body {
 
-    background: url(img/SfondoPagina.jpg) no-repeat center center fixed;
+    background: url(img/sfondo1.png) no-repeat center center fixed;
 
     -moz-background-size: cover;
 
@@ -61,6 +65,8 @@
 
     color: #000;
 
+    font-family:'Arial Narrow';
+
   }
 
   th {
@@ -70,6 +76,7 @@
   table, th, td{
     border:1px solid #000;
     border-collapse: collapse;
+    background-color: rgb(211, 211, 211);
   }
 
   th, td{
@@ -126,7 +133,7 @@
 
     padding: 20px 0;
 
-    background-color: rgb(248, 87, 87);
+    background-color: rgb(252, 125, 125);
 
   }
 
@@ -268,7 +275,7 @@
   }*/
 
   h2{
-    color: rgb(52, 172, 72);
+    color: whitesmoke;
   }
 
   .Descrizione h2 {
@@ -304,10 +311,14 @@
 
     grid-template-columns: repeat(2, 1fr);
 
+    background-color: rgb(211, 211, 211);
+
     grid-gap: 70px;
 
     margin-bottom: 80px;
-
+    margin:20px auto;
+    border-style: solid;
+    border-color:rgb(211, 211, 211);
   }
 
   
@@ -378,7 +389,7 @@
 
   .footer {
 
-    background-color: #0067b8;
+    background-color: #0048e4;
 
   }
 

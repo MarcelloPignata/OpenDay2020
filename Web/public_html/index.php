@@ -15,7 +15,12 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
 
   <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
-
+  <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+      integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ="
+      crossorigin="anonymous"
+    />
 </head>
 
 
@@ -50,11 +55,17 @@
 
     <header class="Descrizione">
     <h1 class = "titolo"> TRIBOGO </h1>
-    <br> <br> <br> <br>
+    <br> <br> <br>
+    <br> <br> <br>
+
+    <p> <span class="giallo">Questo sito serve:<br> 
+    tramite questo sito web si possono visualizzare gl'ordini effettuati dai clienti con l'applicazione,in ordine<br> cronologico di inserimento tramite il tasto "ordini".<br> 
+    E' possbile anche apportare delle modifiche alle informazioni riguardante gli appartamenti, aggiungendone<br> di nuovi disponibili per la clientela o eliminarne alcuni che non sono più a affittabili.<br> 
+    tramite questo sistema si può avere un maggiore controllo sull'attività che i clienti svolgono dall'applicazione.<br>
+    Sono presenti anche i collegamenti ai social media principali cosi da poter gestire le proprio pagine per<br> promuovere la propria app nel mondo digitale in modo più diretto e veloce. <br>
+  </span>
     
-    <p> Questo sito serve:<br> 
-    per inserire i vari appartamenti che poi si visualizzeranno sull'applicazione.<br>
-    per visualizzare tutti gl'ordini che hanno fatto nell'applicazione.<br> 
+
 
        </p>
     <video autoplay muted loop class = "video-back">
@@ -96,9 +107,9 @@
 
 
 
-          echo '<h3>'.$var[1].'</h3>'."-->";
+          echo '<h3>'.$var[1].'</h3>';
 
-          echo "ID:  ".$var[0].'<br/>';
+          echo '<h4>'."ID:  ".$var[0].'</h4>';
 
           echo "<img src=".'"'."img/".$var[2].'"'."/>";
 
@@ -125,6 +136,25 @@
     <a href="#" class="btn">HOME <i class="fas fa-chevron-right"></i>
 
     </a>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+          <h2>Seguimi su:</h2>
+          <a href="https://www.facebook.com">
+          <i class="fab fa-facebook fa-2x"></i>
+          </a>
+          <a href="https://www.instagram.com">
+          <i class="fab fa-instagram fa-2x"></i>
+          </a>
+          <a href="https://www.twitter.com">
+          <i class="fab fa-twitter fa-2x"></i>
+          </a>
+          <a href="https://www.linkedin.com">
+          <i class="fab fa-linkedin fa-2x"></i>
+          </a>
+        </div>
+      </footer>
 
   </div>
 
