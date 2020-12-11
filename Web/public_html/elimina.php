@@ -51,20 +51,18 @@
       <div class="content">
 
         <p>
-
+          <h2>Eliminazione avvenuta con successo</h2>
 
           <?php
 
 
           function test()
-          { 
-            $dati = file_get_contents("appartamenti.csv");
+          {
 
-        $part = explode(PHP_EOL, $dati);
 
-       // print_r($part);
+            // print_r($part);
 
-      
+
             $key = $_POST["id_Eliminare"];
 
             //load file into $fc array
@@ -76,13 +74,24 @@
             $f = fopen("appartamenti.csv", "w");
 
             //loop through array using foreach
+
             
-    
+
+
+            
+ 
+             
+ 
+             
+             
+            
             foreach ($fc as $line) {
-              if (!strstr($line, $key)) //look for $key in each line
+              $part = explode("|", $line);
+              if (!strstr($part[0], $key)) //look for $key in each line
                 fputs($f, $line); //place $line back in file
-            
-          }
+
+            }
+          
             fclose($f);
           }
 
